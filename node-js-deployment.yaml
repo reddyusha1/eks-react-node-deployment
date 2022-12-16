@@ -21,6 +21,16 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 4000
+        volumeMounts:
+        - name: persistent-storage
+          mountPath: /var/www/html/storage/logs
+        - name: persistent-storage
+          mountPath: /var/www/html/logs
+      volumes:
+       - name: persistent-storage
+         persistentVolumeClaim:
+          claimName: efs-pvc
+
 
 ---
 
