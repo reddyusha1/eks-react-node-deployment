@@ -1,0 +1,26 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: cluster-eks
+  region: ap-south-1
+
+vpc:
+  subnets:
+    private:
+      ap-south-1a: { id: subnet-04d1168aeef7380e7 }
+      ap-south-1b: { id: subnet-02dc71495fd621203 }
+      
+
+nodeGroups:
+  - name: node1
+    labels: { role: workers }
+    instanceType: m5.large
+    minSize: 2
+    maxSize: 2
+    desiredCapacity: 2
+    volumeSize: 20
+    privateNetworking: true
+    iam:
+      withAddonPolicies:
+        imageBuilder: true

@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: react-app
+  annotations:
+    kubernetes.io/ingress.class: ingress-nginx
+spec:
+  tls:
+  - hosts:
+    - domain1.myapp.com
+    - domain2.myapp.com
+    secretName: kubernetes-tls
+  rules:
+  - host: domain1.myapp.com
+    http:
+      paths:
+      - backend:
+          serviceName: react-app-service
+          servicePort: 3000

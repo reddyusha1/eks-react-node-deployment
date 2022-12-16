@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-js-deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: node-js
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-js
-        image: bravinwasike/node-js
+        image: gajjalausha/node-app:v1.0
         resources:
           limits:
             memory: "512Mi"
